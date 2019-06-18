@@ -70,8 +70,8 @@ class _FirstScreenState extends State<FirstScreen> {
                     Navigator.push(context, MaterialPageRoute(
                     //builder: (context)=>SecondScreen("HAIHAI")
                     builder: (context)=>SecondScreen(
-                      datanya: "TEST SEND DATA",
-                      datanya2: "KEDUA",
+                      datanya: nama.text,
+                      datanya2: email.text,
                     )
                   ));
                 },
