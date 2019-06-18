@@ -3,7 +3,9 @@ import 'firstscreen.dart';
 
 class SecondScreen extends StatefulWidget {
   final String datanya;
-  SecondScreen(this.datanya);
+  final String datanya2;
+  SecondScreen({this.datanya = "Default 1", this.datanya2});
+  // SecondScreen(this.datanya, this.datanya2);
   @override
   _SecondScreenState createState() => _SecondScreenState();
 }
@@ -18,6 +20,7 @@ class _SecondScreenState extends State<SecondScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(widget.datanya),
+            Text(widget.datanya2),
             RaisedButton(
               onPressed: (){
                 Navigator.pop(context);
