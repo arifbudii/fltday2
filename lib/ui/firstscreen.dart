@@ -23,7 +23,25 @@ class FirstScreen extends StatefulWidget {
 //   }
 // }
 class _FirstScreenState extends State<FirstScreen> {
-  TextEditingController nama, email;
+  final nama = TextEditingController();
+  final email = TextEditingController();
+  final password = TextEditingController();
+  bool _obScure = true;
+  void showHidden(){
+    setState(() {
+     _obScure = !_obScure; 
+    });
+  }
+
+  void removeData(){
+    setState(() {
+     nama.clear();
+     email.clear(); 
+    });
+  }
+
+  var _data1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +55,7 @@ class _FirstScreenState extends State<FirstScreen> {
                 height: 40.0,
               ),
               TextFormField(
+                keyboardType: TextInputType.text,
                 controller: nama,
                 decoration: InputDecoration(
                   //hintText: "Nama Lengkap",
@@ -51,6 +70,7 @@ class _FirstScreenState extends State<FirstScreen> {
                 height: 30.0,
               ),
               TextFormField(
+                keyboardType: TextInputType.emailAddress,
                 controller: email,
                 decoration: InputDecoration(
                   //hintText: "Nama Lengkap",
@@ -62,6 +82,33 @@ class _FirstScreenState extends State<FirstScreen> {
                 ),
               ),
               SizedBox(
+                height: 30.0,
+              ),
+              TextFormField(
+                keyboardType: TextInputType.text,
+                obscureText: _obScure,
+                controller: password,
+                decoration: InputDecoration(
+                  //hintText: "Nama Lengkap",
+                  labelText: "Password",
+                  icon: Icon(Icons.lock),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      showHidden();
+                    },
+                    icon: Icon(_obScure ? Icons.visibility_off : Icons.visibility),
+                    //icon: Icon(Icons.visibility_off),
+                  )
+                ),
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              Text(_data1 ?? 'Forgot Password?'),
+              SizedBox(
                 height: 50.0,
               ),
               RaisedButton(
@@ -72,6 +119,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     builder: (context)=>SecondScreen(
                       datanya: nama.text,
                       datanya2: email.text,
+                      datanya3: password.text,
                     )
                   ));
                 },
