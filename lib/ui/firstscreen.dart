@@ -33,14 +33,15 @@ class _FirstScreenState extends State<FirstScreen> {
     });
   }
 
-  void removeData(){
-    setState(() {
-     nama.clear();
-     email.clear(); 
-    });
-  }
-
   var _data1;
+  pindah() async{
+    _data1 = await Navigator.push(context, MaterialPageRoute(
+      builder: (context) => SecondScreen(
+        datanya: nama.text,
+        datanya2: email.text,
+        datanya3: password.text)
+    ))
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,14 +115,15 @@ class _FirstScreenState extends State<FirstScreen> {
               RaisedButton(
                 onPressed: (){
                   //Navigator.pushReplacement(context, MaterialPageRoute(
-                    Navigator.push(context, MaterialPageRoute(
-                    //builder: (context)=>SecondScreen("HAIHAI")
-                    builder: (context)=>SecondScreen(
-                      datanya: nama.text,
-                      datanya2: email.text,
-                      datanya3: password.text,
-                    )
-                  ));
+                  //   Navigator.push(context, MaterialPageRoute(
+                  //   //builder: (context)=>SecondScreen("HAIHAI")
+                  //   builder: (context)=>SecondScreen(
+                  //     datanya: nama.text,
+                  //     datanya2: email.text,
+                  //     datanya3: password.text,
+                  //   )
+                  // ));
+                  pindah();
                 },
                 child: Text("Next Screen"),
               ),
